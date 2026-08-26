@@ -67,6 +67,12 @@ class Resp3Strategy extends Resp2Strategy
             return INF;
         }
 
+        // Redis < 7.2 may emit any libc representation of NaN,
+        // such as "-nan", "NAN" or "nan(char-sequence)".
+        if (preg_match('/^-?nan(\(.*\))?$/i', $string) === 1) {
+            return NAN;
+        }
+
         return (float) $string;
     }
 

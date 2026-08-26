@@ -3,6 +3,7 @@
 ## Unlreleads
 ### Added
 ### Changed
+- Changed RESP3 double parsing to return `NAN` for NaN payloads instead of `0.0`
 ### Fixed
 
 ## v3.6.0 (2026-08-14)
