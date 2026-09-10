@@ -63,12 +63,14 @@ class Resp3Strategy extends Resp2Strategy
      */
     protected function parseDouble(string $string): float
     {
-        if ($string === 'inf' || $string === '-inf') {
+        if ($string === 'inf') {
             return INF;
         }
+      
+        if ($string === '-inf') {
+            return -INF;
+        }
 
-        // Redis < 7.2 may emit any libc representation of NaN,
-        // such as "-nan", "NAN" or "nan(char-sequence)".
         if (preg_match('/^-?nan(\(.*\))?$/i', $string) === 1) {
             return NAN;
         }
