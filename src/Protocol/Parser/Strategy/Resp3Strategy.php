@@ -66,7 +66,7 @@ class Resp3Strategy extends Resp2Strategy
         if ($string === 'inf') {
             return INF;
         }
-      
+
         if ($string === '-inf') {
             return -INF;
         }
